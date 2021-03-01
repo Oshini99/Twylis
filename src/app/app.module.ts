@@ -14,8 +14,13 @@ import { SignInComponent } from './user/sign-in/sign-in.component';
 import { appRoutes } from './routes';
 //import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { TestPageComponent } from './test-page/test-page.component';
+import { SamplePage1Component } from './sample-page1/sample-page1.component';
+import { SamplePage2Component } from './sample-page2/sample-page2.component';
+import { SamplePage3Component } from './sample-page3/sample-page3.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialDashboardComponent } from './material-dashboard/material-dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -47,6 +52,10 @@ export class SafePipe implements PipeTransform {
     //HomeComponent
     FooterComponent,
     HeaderComponent,
+    TestPageComponent,
+    SamplePage1Component,
+    SamplePage2Component,
+    SamplePage3Component
     MaterialDashboardComponent
   ],
 
