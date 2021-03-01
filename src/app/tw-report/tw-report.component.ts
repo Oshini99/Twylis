@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
+import * as pdfMake from "pdfmake/build/pdfmake";
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 
 import {DataService} from '../data.service';
 import {DocumentEvent} from '../document-event';
 
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+(<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-tw-report',
@@ -66,19 +66,17 @@ export class TwReportComponent implements OnInit {
       columnWidths.push(columnWidth - (event.includeBorders ? borderWidth : 0));
     }
 
-    let pageContent: any;
-
     const docDefinition = {
       pageSize: {width: pageWidth, height: pageHeight},
       // pageMargins: [25.551, 24.094, 25.513, 24.094],
       pageMargins: [24.094, 24.094, 24.094, 24.094],
       defaultStyle: {
         margin: 0
-      },
-      content: pageContent
+      }
     };
 
-    pdfMake.createPdf(docDefinition).getDataUrl((outDoc: string) => {
+
+    (<any>pdfMake).createPdf(docDefinition).getDataUrl((outDoc: string) => {
       this.pdfUrl = outDoc;
     });
   }
