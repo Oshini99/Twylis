@@ -1,0 +1,31 @@
+.check {
+  margin-top: 20px;
+}
+
+.form-content {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+form {
+  margin-left: 30px;
+  padding: 0px 15px 50px 35px;
+}
+
+form .submit {
+  margin-top: 20px;
+}
+
+button.submit-area {
+  margin-right: 30px;
+}
+
+label {
+  font-size: 0.8em;
+}
+
+label small:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
