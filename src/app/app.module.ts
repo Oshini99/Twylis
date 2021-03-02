@@ -1,11 +1,8 @@
-import {NgModule, Pipe, PipeTransform} from '@angular/core';
-import {BrowserModule, DomSanitizer} from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import {ReactiveFormsModule} from '@angular/forms';
-import { TwFormComponent } from './tw-form/tw-form.component';
-import { TwReportComponent } from './tw-report/tw-report.component';
 import { RouterModule } from '@angular/router'
-import { AppRoutingModule } from './app-routing.module';
+//import { AppRoutingModule } from './app-routing.module';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { HttpClientModule } from '@angular/common/http';
 //import { ToastrModule } from 'ngx-toastr';
@@ -25,22 +22,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 
-@Pipe({name: 'safe'})
-export class SafePipe implements PipeTransform {
-  constructor(private sanitizer: DomSanitizer) {
-  }
-
-  transform(url: string) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-  }
-}
-
 @NgModule({
   declarations: [
     AppComponent,
-    SafePipe,
-    TwFormComponent,
-    TwReportComponent
     SignUpComponent,
     UserComponent,
     SignInComponent,
@@ -52,7 +36,6 @@ export class SafePipe implements PipeTransform {
 
   imports: [
     BrowserModule,
-    ReactiveFormsModule
     FormsModule,
     HttpClientModule,
     //ToastrModule.forRoot(),
