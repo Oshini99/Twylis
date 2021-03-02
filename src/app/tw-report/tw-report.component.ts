@@ -32,7 +32,7 @@ export class TwReportComponent implements OnInit {
   updatePdfDocument(event: DocumentEvent) {
     // event.includeBorders = true;
     const mmToPtRatio = 2.83466667;
-    // const mmToPtRatio = 2.8346456692913384;
+    
     const marginSize = 9 * mmToPtRatio;
 
     const columns = 12;
@@ -47,13 +47,11 @@ export class TwReportComponent implements OnInit {
     // 45,315
 
     const contentWidth = pageWidth - 2 * marginSize;
-    // const columnWidth = 16 * mmToPtRatio - 0.5 - 0.5 / columns;
+  
     const columnWidth = 45.3543333333;
 
     const columnHeight = 28.3464642857;
 
-    // const topRowHeight = 3 * mmToPtRatio;
-    // const bottomRowHeight = 7 * mmToPtRatio;
 
     const topRowHeight = 0.3 * columnHeight;
     const bottomRowHeight = 0.7 * columnHeight;
@@ -68,7 +66,7 @@ export class TwReportComponent implements OnInit {
 
     const docDefinition = {
       pageSize: {width: pageWidth, height: pageHeight},
-      // pageMargins: [25.551, 24.094, 25.513, 24.094],
+    
       pageMargins: [24.094, 24.094, 24.094, 24.094],
       defaultStyle: {
         margin: 0
