@@ -1,53 +1,53 @@
 .mainfooter {
-    background-color: #1a2847;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    position: fixed;
-    margin-top: 30px;
-    background: #16222A;
+  background-color: #1a2847;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 0px;
+  background: #16222A;
 }
 
 .list-unstyled {
-    list-style: none;
+  list-style: none;
 }
 
 a {
-    color: white;
-    text-decoration: none;
-    transition-duration: 0.2s;
-    margin: -5px;
+  color: white;
+  text-decoration: none;
+  transition-duration: 0.2s;
+  margin: -5px;
 }
 
 a:hover {
-    color: orange;
+  color: orange;
 }
 
 .text-center {
-    text-align: center;
-    color: white;
-    margin: 20px;
+  text-align: center;
+  color: white;
+  margin: 20px;
 }
 
 h4 {
-    margin: 0px 40px 0px 50px;
+  margin: 0px 40px 0px 50px;
 }
 
 .footer-pad {
-    color: red;
+  color: red;
 }
 
 .row {
-    column-count: 6;
-    margin-top: 50px;
-    margin-left: 20px;
+  column-count: 6;
+  margin-top: 50px;
+  margin-left: 20px;
 }
 
 .brand {
-    color: white;
+  color: white;
 }
 
 .copy {
-    border-top: 1px solid #FFFFFF;
-    font-size: 12px;
+  border-top: 1px solid #FFFFFF;
+  font-size: 12px;
 }
