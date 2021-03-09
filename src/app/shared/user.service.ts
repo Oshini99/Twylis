@@ -18,9 +18,9 @@ export class UserService {
       Email: user.Email,
       FirstName: user.FirstName,
       LastName: user.LastName
-    //throw new Error('Method not implemented.');
-    }  
-    
+      //throw new Error('Method not implemented.');
+    }
+
   }
 
 }
