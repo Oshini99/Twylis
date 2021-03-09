@@ -1,0 +1,18 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+.card-content white{
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    color: #000;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.card-content::before{
+    content: '';
+    position: relative;
+    top: -20px;
+    left: -20px;
+    bottom: -20px;
+    right: -20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.75);
+    filter: blur(1px);
+}
