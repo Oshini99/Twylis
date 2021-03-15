@@ -1,9 +1,13 @@
 import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule
+      ],
       declarations: [
         AppComponent
       ],
@@ -16,27 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-<<<<<<< Updated upstream
-  it(`should have as title 'Header'`, () => {
+  it(`should have as title 'twylis-angular'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Header');
-=======
-  it(`should have as title 'Loginpage'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('Loginpage');
->>>>>>> Stashed changes
+    expect(app.title).toEqual('twylis-angular');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-<<<<<<< Updated upstream
-    expect(compiled.querySelector('.content span').textContent).toContain('Header App is running!');
-=======
-    expect(compiled.querySelector('.content span').textContent).toContain('Loginpage is running!');
->>>>>>> Stashed changes
+    expect(compiled.querySelector('.content span').textContent).toContain('twylis-angular app is running!');
   });
 });
