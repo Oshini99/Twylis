@@ -6,11 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-<<<<<<< Updated upstream
-  //title = 'angular-crash-todolist';
-  title = 'Header';
-=======
-  title = 'Loginpage';
->>>>>>> Stashed changes
+  title = 'twylis-angular';
 }
-
