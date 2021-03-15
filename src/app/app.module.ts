@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router'
 //import { AppRoutingModule } from './app-routing.module';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { HttpClientModule } from '@angular/common/http';
-//import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 import { UserComponent } from './user/user.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { appRoutes } from './routes';
@@ -38,7 +38,12 @@ import { LayoutModule } from '@angular/cdk/layout';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+<<<<<<< Updated upstream
     //ToastrModule.forRoot(),
+=======
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+>>>>>>> Stashed changes
     RouterModule.forRoot(appRoutes)
     AppRoutingModule,
     BrowserAnimationsModule,
