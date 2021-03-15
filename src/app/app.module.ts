@@ -53,7 +53,6 @@ import { appRoutes } from './routes';
     GoogleChartsModule,
     //ToastrModule.forRoot(),
     RouterModule.forRoot(appRoutes),
-    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
