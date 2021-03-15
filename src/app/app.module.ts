@@ -22,6 +22,10 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import { GoogleChartsModule } from 'angular-google-charts';
 
+import { RouterModule } from '@angular/router'
+import { ToastrModule } from 'ngx-toastr';
+import { appRoutes } from './routes';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +50,9 @@ import { GoogleChartsModule } from 'angular-google-charts';
     MatIconModule,
     MatButtonModule,
     LayoutModule,
-    GoogleChartsModule
+    GoogleChartsModule,
+    //ToastrModule.forRoot(),
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent]
