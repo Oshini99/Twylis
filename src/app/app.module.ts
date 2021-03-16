@@ -26,6 +26,10 @@ import { RouterModule } from '@angular/router'
 import { ToastrModule } from 'ngx-toastr';
 import { TwFormComponent } from './tw-form/tw-form.component';
 import { TwReportComponent } from './tw-report/tw-report.component';
+import { SamplePage1Component } from './sample-page1/sample-page1.component';
+import { SamplePage2Component } from './sample-page2/sample-page2.component';
+import { SamplePage3Component } from './sample-page3/sample-page3.component';
+import { TestPageComponent } from './test-page/test-page.component';
 // import { appRoutes } from './routes';
 
 @NgModule({
@@ -40,7 +44,11 @@ import { TwReportComponent } from './tw-report/tw-report.component';
     ErrorPageComponent,
     MaterialDashboardComponent,
     TwFormComponent,
-    TwReportComponent
+    TwReportComponent,
+    SamplePage1Component,
+    SamplePage2Component,
+    SamplePage3Component,
+    TestPageComponent
   ],
   imports: [
     BrowserModule,
