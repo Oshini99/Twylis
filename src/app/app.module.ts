@@ -24,7 +24,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
 
 import { RouterModule } from '@angular/router'
 import { ToastrModule } from 'ngx-toastr';
-import { appRoutes } from './routes';
+// import { appRoutes } from './routes';
 
 @NgModule({
   declarations: [
@@ -51,8 +51,8 @@ import { appRoutes } from './routes';
     MatButtonModule,
     LayoutModule,
     GoogleChartsModule,
-    //ToastrModule.forRoot(),
-    RouterModule.forRoot(appRoutes),
+ // ToastrModule.forRoot(),
+ // RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent]
