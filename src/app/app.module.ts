@@ -24,6 +24,8 @@ import { GoogleChartsModule } from 'angular-google-charts';
 
 import { RouterModule } from '@angular/router'
 import { ToastrModule } from 'ngx-toastr';
+import { TwFormComponent } from './tw-form/tw-form.component';
+import { TwReportComponent } from './tw-report/tw-report.component';
 // import { appRoutes } from './routes';
 
 @NgModule({
@@ -36,7 +38,9 @@ import { ToastrModule } from 'ngx-toastr';
     SignInComponent,
     SignUpComponent,
     ErrorPageComponent,
-    MaterialDashboardComponent
+    MaterialDashboardComponent,
+    TwFormComponent,
+    TwReportComponent
   ],
   imports: [
     BrowserModule,
