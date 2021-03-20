@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import * as pdfMake from "pdfmake/build/pdfmake";
+import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 
 import {DataService} from '../data.service';
 import {DocumentEvent} from '../document-event';
 
-(<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
+(<any> pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-tw-report',
@@ -32,7 +32,6 @@ export class TwReportComponent implements OnInit {
   updatePdfDocument(event: DocumentEvent) {
     // event.includeBorders = true;
     const mmToPtRatio = 2.83466667;
-    
     const marginSize = 9 * mmToPtRatio;
 
     const columns = 12;
@@ -47,7 +46,6 @@ export class TwReportComponent implements OnInit {
     // 45,315
 
     const contentWidth = pageWidth - 2 * marginSize;
-  
     const columnWidth = 45.3543333333;
 
     const columnHeight = 28.3464642857;
@@ -66,7 +64,6 @@ export class TwReportComponent implements OnInit {
 
     const docDefinition = {
       pageSize: {width: pageWidth, height: pageHeight},
-    
       pageMargins: [24.094, 24.094, 24.094, 24.094],
       defaultStyle: {
         margin: 0
@@ -74,7 +71,7 @@ export class TwReportComponent implements OnInit {
     };
 
 
-    (<any>pdfMake).createPdf(docDefinition).getDataUrl((outDoc: string) => {
+    (<any> pdfMake).createPdf(docDefinition).getDataUrl((outDoc: string) => {
       this.pdfUrl = outDoc;
     });
   }
