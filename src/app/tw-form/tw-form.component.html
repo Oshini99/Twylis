@@ -1,8 +1,8 @@
 <div class="form-content">
     <form [formGroup]="featureForm" (ngSubmit)="onSubmit()">
-  
+
       <div *ngFor="let item of items.controls; let i = index;">
-  
+
         <div class="check">
 
           <div class="check-box">
@@ -12,10 +12,10 @@
             <input type="checkbox" class="check-selection" id="Competitors" formControlName="Competitors">
             <label class="select-feature" for="Competitors">Competitors</label><br>
           </div>
-          
+
         </div>
       </div>
-       
+
       <div>
       <div class="submit-area">
         <button type="submit" class="btn btn-primary submit">Submit</button>
@@ -23,5 +23,5 @@
       </div>
     </form>
   </div>
-  
+
 

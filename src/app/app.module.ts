@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -22,7 +22,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import { GoogleChartsModule } from 'angular-google-charts';
 
-import { RouterModule } from '@angular/router'
+import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { TwFormComponent } from './tw-form/tw-form.component';
 import { TwReportComponent } from './tw-report/tw-report.component';
@@ -50,22 +50,23 @@ import { TestPageComponent } from './test-page/test-page.component';
     SamplePage3Component,
     TestPageComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    LayoutModule,
-    GoogleChartsModule,
- // ToastrModule.forRoot(),
- // RouterModule.forRoot(appRoutes),
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
+        MatIconModule,
+        MatButtonModule,
+        LayoutModule,
+        GoogleChartsModule,
+        ReactiveFormsModule,
+        // ToastrModule.forRoot(),
+        // RouterModule.forRoot(appRoutes),
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
