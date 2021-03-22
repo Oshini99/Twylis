@@ -6,6 +6,11 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { MaterialDashboardComponent } from './material-dashboard/material-dashboard.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import {SamplePage1Component} from './sample-page1/sample-page1.component';
+import {SamplePage2Component} from './sample-page2/sample-page2.component';
+import {SamplePage3Component} from './sample-page3/sample-page3.component';
+import {TestPageComponent} from './test-page/test-page.component';
+import {TwFormComponent} from './tw-form/tw-form.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -19,6 +24,11 @@ const routes: Routes = [
     children: [{ path: '', component: SignInComponent }]
   },
   {path: 'dashboard', component: MaterialDashboardComponent},
+  { path: 'sample-1', component: SamplePage1Component},
+  { path: 'sample-2', component: SamplePage2Component},
+  { path: 'sample-3', component: SamplePage3Component},
+  { path: 'test', component: TestPageComponent},
+  { path: 'form', component: TwFormComponent},
   {path: '**', component: ErrorPageComponent}
 ];
 

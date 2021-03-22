@@ -9,7 +9,7 @@
   -o-background-size: cover;
   background-size: cover;
   background-color: white;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.5);
   box-shadow: 0px 5px 5px #000;
   overflow: auto;
   background-blend-mode: soft-light;
