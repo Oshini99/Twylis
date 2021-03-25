@@ -40,8 +40,12 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 # In[2]:
 
 
+# 14 - Model 1
+# 22 - Model 2
+# 21 - DataSet
+
 # set the path of the data set 1 (dataset which created using real time data)
-df1 = pd.read_csv("Twylist Telecom Dataset.csv" ,header = None)
+df1 = pd.read_csv("/Users/sachinim/Documents/SDGP/Twylist - Data Science Model/Twylist Telecom Dataset.csv" ,header = None)
 
 # 143570 data
 df1.shape
@@ -187,7 +191,7 @@ df1
 
 
 # set the path of the data set 2 
-df2 = pd.read_csv("Telecom Dataset.csv" )
+df2 = pd.read_csv("/Users/sachinim/Documents/SDGP/Twylist - Data Science Model/Telecom Dataset.csv" )
 # Add the cleaning method
 df2["tweet_clean"] = df2["text"].apply(clean_text)
 
@@ -395,17 +399,11 @@ plt.xlabel("Algorithm Model")
 plt.show()
 
 
-# In[ ]:
-
-
-
-
-
 # In[36]:
 
 
 #save tfidf
-with open("tfidf3.pkl", 'wb') as file:
+with open("tw_tfidf.pkl", 'wb') as file:
     pickle.dump(tfidf_vectorizer, file)
 
 
@@ -413,7 +411,7 @@ with open("tfidf3.pkl", 'wb') as file:
 
 
 #save model
-with open("model3.pkl", 'wb') as file:
+with open("tw_model.pkl", 'wb') as file:
     pickle.dump(svm_model, file)
 
 
@@ -422,10 +420,10 @@ with open("model3.pkl", 'wb') as file:
 
 ########### Load and get Predictions - Should goes to the backend 
 
-with open("model3.pkl", 'rb') as file:
+with open("tw_model.pkl", 'rb') as file:
     model = pickle.load(file)
     
-with open("tfidf3.pkl", 'rb') as file:
+with open("tw_tfidf.pkl", 'rb') as file:
     tfidf = pickle.load(file)
 
 
