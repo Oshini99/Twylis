@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Content",
+    "\\Controllers",
+    "\\fonts",
+    "\\Migrations",
+    "\\obj",
+    "\\obj\\Debug",
+    "\\obj\\Release",
+    "\\Properties",
+    "\\Scripts"
+  ],
+  "SelectedNode": "\\Startup.cs",
+  "PreviewInSolutionExplorer": false
+}
