@@ -18,10 +18,14 @@ BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAPVwNQEAAAAA%2Bv7l3kAtsp7W7AvPRZzXC%2Fcc4fU%
 def search_twitter(query, tweet_fields, max_results=10, bearer_token=BEARER_TOKEN):
     headers = {"Authorization": "Bearer {}".format(bearer_token)}
 
-    url = "https://api.twitter.com/2/tweets/search/recent?query={}&{}&max_results={}".format(
-        query, tweet_fields, max_results
+    _url = "https://api.twitter.com/1.1/search/tweets.json?q={}&result_type=recent&{}&count={}&lang={}&locale={}".format(
+        query, tweet_fields, max_results, 'en', 'en'
     )
-    response = requests.request("GET", url, headers=headers)
+
+    # url = "https://api.twitter.com/2/tweets/search/recent?query={}&{}&max_results={}".format(
+    #     query, tweet_fields, max_results
+    # )
+    response = requests.request("GET", _url, headers=headers)
 
     print(response.status_code)
 
@@ -48,12 +52,6 @@ def clean_text(tweet):
     if (tweet[:4] == "b'rt"):
         tweet = tweet.split(":", 1)[1]
 
-    # splitting the tweet
-    tweet = tweet.split()
-
-    # Joining the tweet
-    tweet = " ".join(tweet)
-
     # Removing digits and numbers
     tweet = "".join([i for i in tweet if not i.isdigit()])
 
@@ -62,7 +60,6 @@ def clean_text(tweet):
 
     # cleaning = nltk.tokenize.wordpunct_tokenize(tweet)
     # tweet = " ".join(w for w in nltk.wordpunct_tokenize(tweet) if w.lower() in words or not w.isalpha())
-
     tweet = text_lemmatizer(tweet)
 
     return tweet
@@ -78,8 +75,7 @@ query = input("Enter Key-Word: ")
 tweet_fields = "tweet.fields=text,author_id,created_at"
 
 # twitter api call
-json_response = search_twitter(query=query, tweet_fields=tweet_fields, max_results=10, bearer_token=BEARER_TOKEN)
-print(type(json_response))
+json_response = search_twitter(query=query, tweet_fields=tweet_fields, max_results=5, bearer_token=BEARER_TOKEN)
 
 print("------------------------------------------------\n")
 # pretty printing
@@ -89,26 +85,35 @@ print(json.dumps(json_response, indent=4, sort_keys=True))
 # json_response = list(json_response)
 
 tweetList = []
+tweetListRams = []
 # print("++++++++++           ",json_response)
-for x in range(0, len(json_response['data'])):
-    print("-----------")
-    # if detect(json_response['data'][x]['text']) == 'en':
-    # tweetList.append(json_response['data'][x]['text'])
-    tweetList.append(clean_text(json_response['data'][x]['text']))
+
+if len(json_response['statuses']) == 0:
+    print("Error occurred...")
+
+else:
+    for x in range(0, len(json_response['statuses'])):
+        print("-----------")
+        # if detect(json_response['statuses'][x]['text']) == u'en':
+        # tweetList.append(json_response['statuses'][x]['text'])
+        tweetListRams.append(json_response['statuses'][x]['text'])
+        tweetList.append(clean_text(json_response['statuses'][x]['text']))
 
 
-print("\n    +++ Tweets List +++\n")
-for t in tweetList:
-    print(t,"\n")
+    print("\n    +++ Tweets List +++\n")
+    for t in tweetList:
+        print(t, "\n")
 
+    with open("tw_model.pkl", 'rb') as file:
+        model = pickle.load(file)
 
+    with open("tw_tfidf.pkl", 'rb') as file:
+        tfidf_vectorizer = pickle.load(file)
 
-with open("tw_model.pkl", 'rb') as file:
-    model = pickle.load(file)
+    print('\n\n\n')
+    text_vector = tfidf_vectorizer.transform(tweetList)
 
-with open("tw_tfidf.pkl", 'rb') as file:
-    tfidf_vectorizer = pickle.load(file)
+    predicts = model.predict(text_vector)
 
-print('\n\n\n')
-text_vector = tfidf_vectorizer.transform(tweetList)
-print(model.predict(text_vector))
+    for k, v in zip(predicts, tweetListRams):
+        print(k, " - ", v)
