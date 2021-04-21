@@ -1,44 +1,71 @@
 
-<form class="col s12 white" #signUpForm="ngForm" (ngSubmit)="OnSubmit(signUpForm)">
+<!-- <form class="col s12 white" #signUpForm="ngForm" (ngSubmit)="OnSubmit(signUpForm)"> -->
+<form class="col s12 white" #signUpForm="ngForm">
   <div class="row">
     <div class="input-field col s6">
-      <input class="validate" type="text" name="UserName" #UserName="ngModel" [(ngModel)]="user.UserName" required>
-      <label data-error="Required field!">UserName</label>
+      <input class="validate" type="text" name="email" #Email="ngModel" [pattern]="emailPattern" [(ngModel)]="registerUserData.email" required>
+      <label data-error="Invalid email!">Email</label>
     </div>
     <div class="input-field col s6">
-      <input class="validate" type="password" name="Password" #Password="ngModel" [(ngModel)]="user.Password" required minlength="3">
+      <input class="validate" type="password" name="password" #Password="ngModel" required minlength="3" [(ngModel)]="registerUserData.password" required>
       <label [attr.data-error]="Password.errors!=null?(Password.errors.required?'Required field!':'Minimum 3 characters needed'):''">Password</label>
     </div>
   </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <input class="validate" type="text" name="Email" #Email="ngModel" [(ngModel)]="user.Email" [pattern]="emailPattern">
-      <label data-error="Invalid email!">Email</label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s6">
-      <input type="text" name="FirstName" #FirstName="ngModel" [(ngModel)]="user.FirstName">
-      <label>First Name</label>
-    </div>
-    <div class="input-field col s6">
-      <input type="text" name="LastName" #LastName="ngModel" [(ngModel)]="user.LastName">
-      <label>Last Name</label>
-    </div>
-  </div>
+<!--  <div class="row">-->
+<!--    <div class="input-field col s6">-->
+<!--      <input type="text" name="FirstName" #FirstName="ngModel" [(ngModel)]="user.FirstName">-->
+<!--      <label>First Name</label>-->
+<!--    </div>-->
+<!--    <div class="input-field col s6">-->
+<!--      <input type="text" name="LastName" #LastName="ngModel" [(ngModel)]="user.LastName">-->
+<!--      <label>Last Name</label>-->
+<!--    </div>-->
+<!--  </div>-->
 
   <div class="input-field col s12">
-    <a (click)="facebookloginfunction()" class="btn btn-primary btn-facebook">Facebook</a>
+    <a class="btn btn-primary btn-facebook">Facebook</a>
   </div>
 
 
   <div class="input-field col s12">
-    <a (click)="googleloginfunction()" class="btn btn-info btn-google">Google</a>
+    <a class="btn btn-info btn-google">Google</a>
   </div>
 
   <div class="row">
     <div class="input-field col s12">
-      <button [disabled]="!signUpForm.valid" class="btn-large btn-submit" type="submit">Submit</button>
+      <button [disabled]="!signUpForm.valid" class="btn-large btn-submit" (click)="registerUser()" type="submit">Submit</button>
     </div>
   </div>
 </form>
+<!--<div class="py-5">-->
+<!--  <div class="row">-->
+<!--    <div class="col-md-6 mx-auto">-->
+<!--      <span class="anchor" id="formLogin"></span>-->
+
+<!--      &lt;!&ndash; form card login &ndash;&gt;-->
+<!--      <div class="card rounded-0">-->
+<!--        <div class="card-header">-->
+<!--          <h3 class="mb-0">Register</h3>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--          <form class="form">-->
+<!--            <div class="form-group">-->
+<!--              <label for="uname1">Username</label>-->
+<!--              <input type="text" [(ngModel)]="registerUserData.email" name="email" class="form-control rounded-0" required>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--              <label>Password</label>-->
+<!--              <input type="password" [(ngModel)]="registerUserData.password" name="password" class="form-control rounded-0"  required>-->
+<!--            </div>-->
+<!--            <button type="button" (click)="registerUser()" class="btn btn-primary float-right">Register</button>-->
+<!--          </form>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;/card-block&ndash;&gt;-->
+<!--      </div>-->
+<!--      &lt;!&ndash; /form card login &ndash;&gt;-->
+
+<!--    </div>-->
+
+
+<!--  </div>-->
+<!--</div>-->

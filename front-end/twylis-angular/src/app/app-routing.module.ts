@@ -11,8 +11,12 @@ import {SamplePage2Component} from './sample-page2/sample-page2.component';
 import {SamplePage3Component} from './sample-page3/sample-page3.component';
 import {TestPageComponent} from './test-page/test-page.component';
 import {TwFormComponent} from './tw-form/tw-form.component';
+import {AuthGuard} from './auth.guard';
+import {AccountComponent} from './account/account.component';
+
 
 const routes: Routes = [
+
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent},
   {
@@ -23,7 +27,8 @@ const routes: Routes = [
     path: 'login', component: UserComponent,
     children: [{ path: '', component: SignInComponent }]
   },
-  {path: 'dashboard', component: MaterialDashboardComponent},
+  {path: 'account', component: AccountComponent, canActivate: [AuthGuard]},
+  {path: 'dashboard', component: MaterialDashboardComponent, canActivate: [AuthGuard]},
   { path: 'sample-1', component: SamplePage1Component},
   { path: 'sample-2', component: SamplePage2Component},
   { path: 'sample-3', component: SamplePage3Component},
