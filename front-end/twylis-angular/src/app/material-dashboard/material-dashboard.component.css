@@ -133,3 +133,18 @@
   height: 100%;
   transform: translateY(-100%);
 }
+
+#search-bar {
+  width: 30%;
+  margin: 80px 35% 5px 35%;
+  font-size: large;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px;
+  font-family: sans-serif;
+}
+
+#search-button {
+  position: center;
+  width: 150px;
+}
