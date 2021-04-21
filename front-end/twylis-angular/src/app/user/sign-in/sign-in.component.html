@@ -1,19 +1,19 @@
-<form #loginForm="ngForm" class="col s12 white" >
+<form #loginForm="ngForm" class="col s12 white"  >
    <div class="row">
      <div class="input-field col s12">
-       
-       <input type="text" #UserName ngModel name="UserName" placeholder="Username" required>
+
+       <input type="text" #Email ngModel name="email" placeholder="Email" [(ngModel)]="loginUserData.email" required>
      </div>
    </div>
    <div class="row">
       <div class="input-field col s12">
-        
-        <input type="password" #Password ngModel name="Password" placeholder="Password" required>
+
+        <input type="password" #Password ngModel name="Password" placeholder="Password" [(ngModel)]="loginUserData.password"  required>
       </div>
     </div>
     <div class="row">
         <div class="input-field col s12">
-          <button [disabled]="!loginForm.valid" class="btn-large btn-submit" type="submit">Login</button>
+          <button [disabled]="!loginForm.valid" class="btn-large btn-submit" type="submit" (click)="loginUser()">Login</button>
         </div>
       </div>
 </form>

@@ -51,7 +51,8 @@ div.error-message i{
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: url("backgroundimg.jpg") fixed;
+  background: url("./assets/wallpaper.jpg") fixed;
+  /*background-color: #030303;*/
   background-size: 100% 150%;
 }
 
