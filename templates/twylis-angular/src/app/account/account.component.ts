@@ -18,5 +18,4 @@ export class AccountComponent implements OnInit {
   getEvents() {
     return this.http.get<any>(this._accountUrl)
   }
-
 }
