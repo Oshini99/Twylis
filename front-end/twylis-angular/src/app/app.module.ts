@@ -30,6 +30,7 @@ import { SamplePage1Component } from './sample-page1/sample-page1.component';
 import { SamplePage2Component } from './sample-page2/sample-page2.component';
 import { SamplePage3Component } from './sample-page3/sample-page3.component';
 import { TestPageComponent } from './test-page/test-page.component';
+import { AlertComponent } from './alert/alert.component';
 // import { appRoutes } from './routes';
 
 @NgModule({
@@ -48,7 +49,8 @@ import { TestPageComponent } from './test-page/test-page.component';
     SamplePage1Component,
     SamplePage2Component,
     SamplePage3Component,
-    TestPageComponent
+    TestPageComponent,
+    AlertComponent
   ],
     imports: [
         BrowserModule,
