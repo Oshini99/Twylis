@@ -91,7 +91,7 @@ def keywordSearch():
 
     # twitter api call
     json_response = search_twitter(query=query, tweet_fields=tweet_fields, max_results=5, bearer_token=BEARER_TOKEN)
-
+    tweetList.clear()
     # x = ""
     if len(json_response['statuses']) == 0:
         print("Error occurred...")
