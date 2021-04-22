@@ -14,7 +14,7 @@ import sys
 
 
 nltk.download('punkt')
-app = Flask(__name__, template_folder='templates/twylis-angular/src')
+app = Flask(__name__)
 BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAPVwNQEAAAAA%2Bv7l3kAtsp7W7AvPRZzXC%2Fcc4fU%3DbNaKa8qCU6S0zTuYkQ0DgC0bo3yXdMS1mlAQdw0cvOqeStHJAW"
 
 tweetList = []
