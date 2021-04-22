@@ -67,7 +67,7 @@ def clean_text(tweet):
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    return render_template('example.html')
 
 
 # http://127.0.0.1:5000/search?keyword=hello
