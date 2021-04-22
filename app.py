@@ -15,6 +15,9 @@ nltk.download('punkt')
 app = Flask(__name__)
 BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAPVwNQEAAAAA%2Bv7l3kAtsp7W7AvPRZzXC%2Fcc4fU%3DbNaKa8qCU6S0zTuYkQ0DgC0bo3yXdMS1mlAQdw0cvOqeStHJAW"
 
+tweetList = ['I hate this world', 'I love ice cream', 'There was a dog', 'I need water', 'He was so disappointed']
+predicts = []
+
 
 # define search twitter function
 def search_twitter(query, tweet_fields, max_results=10, bearer_token=BEARER_TOKEN):
@@ -72,7 +75,7 @@ def index():
 
 
 # http://127.0.0.1:5000/search?keyword=hello
-# https://twylis.herokuapp.com/search?keyword=hello
+# https://twylis-app.herokuapp.com/search?keyword=hello
 
 @app.route("/search", methods=['GET'])
 def keywordSearch():
@@ -87,19 +90,11 @@ def keywordSearch():
     # twitter api call
     json_response = search_twitter(query=query, tweet_fields=tweet_fields, max_results=5, bearer_token=BEARER_TOKEN)
 
-    tweetList = ['I hate this world', 'I love ice cream', 'There was a dog', 'I need water', 'He was so disappointed']
-    predicts = []
     # x = ""
     if len(json_response['statuses']) != 0:
         # print("Error occurred...")
 
-    # x = 6 # Crash
-    # x = json_response # working
-    # x = json_response['statuses'] #Crash
-    # x = str(en(json_response['statuses'])) #Crash
-    # x = len(json_response) #Crash
-
-    # else:
+        # else:
         # for x in range(0, len(json_response['statuses'])):
         #     tweetList.append(clean_text(json_response['statuses'][x]['text']))
 
@@ -127,6 +122,22 @@ def keywordSearch():
             print(k, " - ", v)
 
         return collections.Counter(predicts)
+
+
+@app.route("/content", methods=['GET'])
+def summary():
+    if len(tweetList) != 0:
+
+        content = ""
+
+        for k, v in zip(predicts, tweetList):
+            print(k, ",", v)
+            content = k, ",", v, "\n"
+        print(content)
+
+        return content
+    else:
+        return "No content here"
 
 # app.run()
 if __name__ == '__main__':
