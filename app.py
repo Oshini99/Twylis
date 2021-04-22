@@ -15,8 +15,9 @@ nltk.download('punkt')
 app = Flask(__name__)
 BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAPVwNQEAAAAA%2Bv7l3kAtsp7W7AvPRZzXC%2Fcc4fU%3DbNaKa8qCU6S0zTuYkQ0DgC0bo3yXdMS1mlAQdw0cvOqeStHJAW"
 
-tweetList = ['I hate this world', 'I love ice cream', 'There was a dog', 'I need water', 'He was so disappointed']
-predicts = []
+tweetList = []
+# tweetList = ['I hate this world', 'I love ice cream', 'There was a dog', 'I need water', 'He was so disappointed']
+predictsList = []
 
 
 # define search twitter function
@@ -71,6 +72,7 @@ def clean_text(tweet):
 
 @app.route("/")
 def index():
+    # return "wtf"
     return render_template('index.html')
 
 
@@ -91,12 +93,12 @@ def keywordSearch():
     json_response = search_twitter(query=query, tweet_fields=tweet_fields, max_results=5, bearer_token=BEARER_TOKEN)
 
     # x = ""
-    if len(json_response['statuses']) != 0:
-        # print("Error occurred...")
+    if len(json_response['statuses']) == 0:
+        print("Error occurred...")
 
-        # else:
-        # for x in range(0, len(json_response['statuses'])):
-        #     tweetList.append(clean_text(json_response['statuses'][x]['text']))
+    else:
+        for x in range(0, len(json_response['statuses'])):
+            tweetList.append(clean_text(json_response['statuses'][x]['text']))
 
         # for t in tweetList:
         #     print(t)
@@ -124,21 +126,41 @@ def keywordSearch():
         return collections.Counter(predicts)
 
 
-@app.route("/content", methods=['GET'])
+@app.route("/summary")
 def summary():
     if len(tweetList) != 0:
 
+        with open("tw_model1.pkl", 'rb') as file:
+            model = pickle.load(file)
+
+        print("successfully loaded pkl 1")
+
+        with open("tw_tfidf1.pkl", 'rb') as file:
+            tfidf_vectorizer = pickle.load(file)
+
+        print("successfully loaded pkl 2")
+
+        # print('\n\n\n')
+        text_vector = tfidf_vectorizer.transform(tweetList)
+
+        predicts = model.predict(text_vector)
+
+        print(predicts)
+        print(tweetList)
         content = ""
 
         for k, v in zip(predicts, tweetList):
-            print(k, ",", v)
-            content = k, ",", v, "\n"
+            content += str((k, v))+"\n"
+            # print(type(str((k, ",", v, "\n"))))
+            # print(type(k), "   ", type(v))
+        print("\n")
         print(content)
 
         return content
     else:
         return "No content here"
 
+
 # app.run()
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=8000, debug=True)
