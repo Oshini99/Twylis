@@ -73,7 +73,6 @@ def clean_text(tweet):
 
 @app.route("/")
 def index():
-    # return "wtf"
     return render_template('index.html')
 
 
