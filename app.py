@@ -101,9 +101,6 @@ def keywordSearch():
         for x in range(0, len(json_response['statuses'])):
             tweetList.append(clean_text(json_response['statuses'][x]['text']))
 
-        # for t in tweetList:
-        #     print(t)
-        # print(tweetList)
         print("---------")
 
         with open("tw_model1.pkl", 'rb') as file:
@@ -116,7 +113,6 @@ def keywordSearch():
 
         print("successfully loaded pkl 2")
 
-        # print('\n\n\n')
         text_vector = tfidf_vectorizer.transform(tweetList)
 
         predicts = model.predict(text_vector)
@@ -137,7 +133,6 @@ def summary():
         with open("tw_tfidf1.pkl", 'rb') as file:
             tfidf_vectorizer = pickle.load(file)
 
-        # print('\n\n\n')
         text_vector = tfidf_vectorizer.transform(tweetList)
 
         predicts = model.predict(text_vector)
@@ -152,7 +147,6 @@ def summary():
         return content
     else:
         return "No content here"
-
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)
