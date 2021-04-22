@@ -13,6 +13,7 @@ import {TestPageComponent} from './test-page/test-page.component';
 import {TwFormComponent} from './tw-form/tw-form.component';
 import {AuthGuard} from './auth.guard';
 import {AccountComponent} from './account/account.component';
+import {TwReportComponent} from './tw-report/tw-report.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'sample-3', component: SamplePage3Component},
   { path: 'test', component: TestPageComponent},
   { path: 'form', component: TwFormComponent},
+  { path: 'report', component: TwReportComponent},
   {path: '**', component: ErrorPageComponent}
 ];
 
