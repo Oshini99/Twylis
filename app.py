@@ -12,8 +12,9 @@ from nltk.corpus import words
 from nltk.stem import WordNetLemmatizer
 import sys
 
+
 nltk.download('punkt')
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates/twylis-angular/src')
 BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAPVwNQEAAAAA%2Bv7l3kAtsp7W7AvPRZzXC%2Fcc4fU%3DbNaKa8qCU6S0zTuYkQ0DgC0bo3yXdMS1mlAQdw0cvOqeStHJAW"
 
 tweetList = []
@@ -71,7 +72,7 @@ def clean_text(tweet):
     return tweet
 
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
 
