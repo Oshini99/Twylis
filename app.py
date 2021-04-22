@@ -8,6 +8,7 @@ import nltk
 import requests
 from flask import Flask, request, render_template
 from nltk import word_tokenize
+from nltk.corpus import words
 from nltk.stem import WordNetLemmatizer
 import sys
 
@@ -133,26 +134,18 @@ def summary():
         with open("tw_model1.pkl", 'rb') as file:
             model = pickle.load(file)
 
-        print("successfully loaded pkl 1")
-
         with open("tw_tfidf1.pkl", 'rb') as file:
             tfidf_vectorizer = pickle.load(file)
-
-        print("successfully loaded pkl 2")
 
         # print('\n\n\n')
         text_vector = tfidf_vectorizer.transform(tweetList)
 
         predicts = model.predict(text_vector)
 
-        print(predicts)
-        print(tweetList)
         content = ""
 
         for k, v in zip(predicts, tweetList):
             content += str((k, v))+"\n"
-            # print(type(str((k, ",", v, "\n"))))
-            # print(type(k), "   ", type(v))
         print("\n")
         print(content)
 
