@@ -18,7 +18,6 @@ app = Flask(__name__)
 BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAPVwNQEAAAAA%2Bv7l3kAtsp7W7AvPRZzXC%2Fcc4fU%3DbNaKa8qCU6S0zTuYkQ0DgC0bo3yXdMS1mlAQdw0cvOqeStHJAW"
 
 tweetList = []
-# tweetList = ['I hate this world', 'I love ice cream', 'There was a dog', 'I need water', 'He was so disappointed']
 predictsList = []
 
 
@@ -30,11 +29,7 @@ def search_twitter(query, tweet_fields, max_results=10, bearer_token=BEARER_TOKE
         query, tweet_fields, max_results, 'en', 'en'
     )
 
-    # url = "https://api.twitter.com/2/tweets/search/recent?query={}&{}&max_results={}".format(
-    #     query, tweet_fields, max_results
-    # )
     response = requests.request("GET", _url, headers=headers)
-    # print(response.status_code)
 
     if response.status_code != 200:
         raise Exception(response.status_code, response.text)
@@ -51,11 +46,11 @@ def text_lemmatizer(text):
     return " ".join(stem_sentence)
 
 
-# Remove special characters from the tweet
+# Remove special characters from tweets
 def clean_text(tweet):
     tweet = tweet.lower()
 
-    # have to remove "b'RT @endaburke81" at the begining of the tweet
+    # remove "b'RT @endaburke81" at the begining of the tweet
     if (tweet[:4] == "b'rt"):
         tweet = tweet.split(":", 1)[1]
 
@@ -65,8 +60,6 @@ def clean_text(tweet):
     # Removing special characters from the tweet
     tweet = re.sub(f'[{re.escape(string.punctuation)}]', "", tweet)
 
-    # cleaning = nltk.tokenize.wordpunct_tokenize(tweet)
-    # tweet = " ".join(w for w in nltk.wordpunct_tokenize(tweet) if w.lower() in words or not w.isalpha())
     tweet = text_lemmatizer(tweet)
 
     return tweet
@@ -80,6 +73,7 @@ def index():
 # http://127.0.0.1:5000/search?keyword=hello
 # https://twylis-app.herokuapp.com/search?keyword=hello
 
+# End point to give the results of the analysed tweets
 @app.route("/search", methods=['GET'])
 def keywordSearch():
     # prompt the search term
@@ -91,42 +85,44 @@ def keywordSearch():
     tweet_fields = "tweet.fields=text,author_id,created_at"
 
     # twitter api call
-    json_response = search_twitter(query=query, tweet_fields=tweet_fields, max_results=5, bearer_token=BEARER_TOKEN)
+    json_response = search_twitter(query=query, tweet_fields=tweet_fields, max_results=20, bearer_token=BEARER_TOKEN)
     tweetList.clear()
-    # x = ""
+
     if len(json_response['statuses']) == 0:
         print("Error occurred...")
 
+    # the tweets are added to a list
     else:
         for x in range(0, len(json_response['statuses'])):
             tweetList.append(clean_text(json_response['statuses'][x]['text']))
 
-        print("---------")
-
+        # unpickling the pickle files
         with open("tw_model1.pkl", 'rb') as file:
             model = pickle.load(file)
-
-        print("successfully loaded pkl 1")
 
         with open("tw_tfidf1.pkl", 'rb') as file:
             tfidf_vectorizer = pickle.load(file)
 
-        print("successfully loaded pkl 2")
+        print("successfully loaded pkl files")
 
+        # predicts the tweets taking from the list
         text_vector = tfidf_vectorizer.transform(tweetList)
 
         predicts = model.predict(text_vector)
 
+        # prints results in the terminal
         for k, v in zip(predicts, tweetList):
             print(k, " - ", v)
 
         return collections.Counter(predicts)
 
-
+# create an end point to send a summary of the tweets analysed.
 @app.route("/summary")
 def summary():
     if len(tweetList) != 0:
+        print('\t\t****** SUMMARY ******')
 
+        # unpickling the pickle files
         with open("tw_model1.pkl", 'rb') as file:
             model = pickle.load(file)
 
@@ -139,6 +135,7 @@ def summary():
 
         content = ""
 
+        # append a string with the tweets and predictions
         for k, v in zip(predicts, tweetList):
             content += str((k, v))+"\n"
         print("\n")
