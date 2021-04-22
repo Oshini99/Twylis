@@ -154,6 +154,5 @@ def summary():
         return "No content here"
 
 
-# app.run()
 if __name__ == '__main__':
     app.run(port=8000, debug=True)
