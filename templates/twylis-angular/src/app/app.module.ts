@@ -34,8 +34,12 @@ import { AuthService } from './auth.service';
 import {AuthGuard} from './auth.guard';
 import {TokenInterceptorService} from './token-interceptor.service';
 import { AccountComponent } from './account/account.component';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+
 // import { appRoutes } from './routes';
 
+
+    
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +73,7 @@ import { AccountComponent } from './account/account.component';
         LayoutModule,
         GoogleChartsModule,
         ReactiveFormsModule,
+        PDFExportModule,
         // ToastrModule.forRoot(),
         // RouterModule.forRoot(appRoutes),
     ],
