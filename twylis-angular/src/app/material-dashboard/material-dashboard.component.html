@@ -1,0 +1,59 @@
+<app-header></app-header>
+<input type="text" placeholder="Search..." id = "search-bar">
+<div class="btn_report" id = "search-button">
+  <a href="#">
+    SEARCH
+  </a>
+</div>
+<div class="grid-container">
+  <h1 class="mat-h1">Dashboard</h1>
+  <mat-grid-list cols="2" rowHeight="350px">
+    <mat-grid-tile *ngFor="let card of cards" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{card.title}}
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div><google-chart
+            [title]="chart.title"
+            [type]="chart.type"
+            [data]="chart.data"
+            [columns]="chart.columns"
+            [options]="chart.options">
+          </google-chart></div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<script type="text/javascript" src="vanilla-tilt.js"></script>
+<script>
+    VanillaTilt.init(document.querySelectorAll(".dashboard-card"), {
+		max: 25,
+		speed: 400,
+        glare: true,
+        "max-glare": 1
+	});
+</script>
+
+
+<div class="btn_report">
+<a href="#">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  generate report
+</a>
+</div>
+
+<app-footer></app-footer>
