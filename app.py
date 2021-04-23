@@ -80,8 +80,6 @@ def keywordSearch():
     # prompt the search term
     query = request.args.get('keyword')
 
-    print("Hello world")
-
     # twitter fields to be returned by api call
     tweet_fields = "tweet.fields=text,author_id,created_at"
 
