@@ -54,7 +54,6 @@ export class MaterialDashboardComponent {
       }
     }
   };
-
   searchKeyword() {
     this.dashService.searchKeyword(this.keyword)
       .subscribe(
