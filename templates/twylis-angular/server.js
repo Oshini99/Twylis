@@ -9,7 +9,7 @@ app.use(express.static(__dirname + '/dist/twylis-angular'));
 
 app.get('/*', function(req,res) {
 
-  res.sendFile(path.join(__dirname+'/dist/twylis-angular/index.html'));
+  res.sendFile(path.join(__dirname+'/dist/twylis-angular/src/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
