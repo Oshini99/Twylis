@@ -8,6 +8,7 @@ import {
   Column,
   GoogleChartComponent
 } from 'angular-google-charts';
+import {DashService} from '../dash.service';
 
 @Component({
   selector: 'app-material-dashboard',
@@ -16,6 +17,9 @@ import {
 })
 export class MaterialDashboardComponent {
 
+  results = [];
+  constructor(private dashService: DashService) {}
+  keyword = '';
   // Number of cards to be generated with column and rows to be covered
   cards = [
     { title: 'Card 1', cols: 2, rows: 1 },
@@ -50,7 +54,11 @@ export class MaterialDashboardComponent {
       }
     }
   };
-  
-
-  
+  searchKeyword() {
+    this.dashService.searchKeyword(this.keyword)
+      .subscribe(
+        res => this.results = res,
+        err => console.log(err)
+      );
+  }
 }
