@@ -15,4 +15,9 @@ export class DashService {
     this._searchUrl = 'https://twylis-app.herokuapp.com/search?keyword=' + keyword.trim();
     return this.http.get<any>(this._searchUrl);
   }
+
+  searchKeywordSummary() {
+    this._searchUrl = 'https://twylis-app.herokuapp.com/summary';
+    return this.http.get<any>(this._searchUrl);
+  }
 }

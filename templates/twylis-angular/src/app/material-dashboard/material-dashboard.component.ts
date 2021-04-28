@@ -22,6 +22,8 @@ export class MaterialDashboardComponent {
     negative: 0,
     neutral: 0
   };
+
+  public summary = '';
   constructor(private dashService: DashService) {}
   keyword = '';
   // Number of cards to be generated with column and rows to be covered
@@ -83,5 +85,16 @@ export class MaterialDashboardComponent {
         },
         err => console.log(err)
       );
+  }
+
+  searchKeywordSummary(){
+    this.dashService.searchKeywordSummary()
+      .subscribe(
+        res => {
+          this.summary = res.value;
+          console.log('Summary: ' + this.summary)
+        },
+        err => console.log(err)
+      )
   }
 }
